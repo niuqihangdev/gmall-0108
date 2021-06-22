@@ -7,7 +7,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.5.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.atguigu</groupId>
@@ -30,7 +29,7 @@
         <lombok.version>1.18.8</lombok.version>
         <jjwt.version>0.11.0</jjwt.version>
         <joda.version>2.10.5</joda.version>
-        <redisson.version>3.12.3</redisson.version>
+        <redisson.version>3.11.2</redisson.version>
         <lang3.version>3.9</lang3.version>
     </properties>
 
