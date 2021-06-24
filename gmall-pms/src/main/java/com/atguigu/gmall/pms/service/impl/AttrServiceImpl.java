@@ -1,6 +1,8 @@
 package com.atguigu.gmall.pms.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +26,29 @@ public class AttrServiceImpl extends ServiceImpl<AttrMapper, AttrEntity> impleme
         );
 
         return new PageResultVo(page);
+    }
+
+    /**
+     * 录入sku属性
+     * @param categoryId
+     * @param type
+     * @param searchType
+     * @return
+     */
+    @Override
+    public List<AttrEntity> queryAttrByCidAndType(Long categoryId, Integer type, Integer searchType) {
+        QueryWrapper<AttrEntity> queryWrapper = new QueryWrapper<>();
+        if(categoryId!=0){
+            queryWrapper.eq("category_id",categoryId);
+        }
+        if(type!=null){
+            queryWrapper.eq("type",type);
+        }
+        if(searchType!=null){
+            queryWrapper.eq("serach_type",searchType);
+        }
+        List<AttrEntity> list = this.list(queryWrapper);
+        return list;
     }
 
 }

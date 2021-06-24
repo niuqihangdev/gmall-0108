@@ -33,6 +33,15 @@ public class SpuController {
 
     @Autowired
     private SpuService spuService;
+    /**
+     * **商品查询
+     */
+    @GetMapping("category/{categoryId}")
+    public ResponseVo<PageResultVo> querySpuByCategoryId(PageParamVo pageParamVo,
+                                                            @PathVariable("categoryId") Long categoryId){
+        PageResultVo pageResultVo=spuService.querySpuByCategoryId(pageParamVo,categoryId);
+        return ResponseVo.ok(pageResultVo);
+    }
 
     /**
      * 列表

@@ -4,7 +4,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 101.200.34.3:8848
+        server-addr: localhost:8848
     sentinel:
       transport:
         dashboard: localhost:8080
@@ -16,7 +16,7 @@ spring:
       type: web
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/guli_pms
+    url: jdbc:mysql://localhost:3306/guli_pms?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
   sleuth: #采集率
