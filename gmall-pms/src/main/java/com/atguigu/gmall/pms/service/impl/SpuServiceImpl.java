@@ -9,6 +9,7 @@ import com.atguigu.gmall.pms.vo.SkuVo;
 import com.atguigu.gmall.pms.vo.SpuAttrValueVo;
 import com.atguigu.gmall.pms.vo.SpuVo;
 import com.atguigu.gmall.sms.vo.SkuSaleVo;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,7 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
      * 添加商品详情信息，九表关联
      * @param spuVo
      */
+    @GlobalTransactional
     @Override
     public void bigSave(SpuVo spuVo) {
         //设置spu的状态和上架时间
@@ -157,10 +159,6 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
             skuSaleVo.setSkuId(skuId);
             this.smsClient.skuSaleInfo(skuSaleVo);
         });
-
-
-
-
     }
 
 }
