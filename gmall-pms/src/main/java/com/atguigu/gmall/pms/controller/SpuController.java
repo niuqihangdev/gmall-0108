@@ -2,6 +2,7 @@ package com.atguigu.gmall.pms.controller;
 
 import java.util.List;
 
+
 import com.atguigu.gmall.pms.vo.SpuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,13 +36,23 @@ public class SpuController {
     @Autowired
     private SpuService spuService;
     /**
-     * **商品查询
+     * ***商品查询
      */
     @GetMapping("category/{categoryId}")
     public ResponseVo<PageResultVo> querySpuByCategoryId(PageParamVo pageParamVo,
                                                             @PathVariable("categoryId") Long categoryId){
         PageResultVo pageResultVo=spuService.querySpuByCategoryId(pageParamVo,categoryId);
         return ResponseVo.ok(pageResultVo);
+    }
+    /**
+     * elasticsearch查询spu信息
+     */
+    @PostMapping("page")
+    @ApiOperation("ES分页查询")
+    public ResponseVo<List<SpuEntity>> querySpuByPageJson(@RequestBody PageParamVo paramVo){
+        PageResultVo pageResultVo = spuService.queryPage(paramVo);
+        List<SpuEntity> list=(List<SpuEntity>) pageResultVo.getList();
+        return ResponseVo.ok(list);
     }
 
     /**

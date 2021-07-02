@@ -33,6 +33,17 @@ public class SpuAttrValueController {
 
     @Autowired
     private SpuAttrValueService spuAttrValueService;
+    /**
+     * ***根据categoryId和spuId获取属性信息
+     */
+    @GetMapping("search/{categoryId}")
+    @ApiOperation("根据categoryId和spuId获取属性信息")
+    public ResponseVo<List<SpuAttrValueEntity>> querySearchBySpuId(
+            @PathVariable("categoryId") Long categoryId,
+            @RequestParam("spuId") Long spuId){
+        List<SpuAttrValueEntity> list=spuAttrValueService.querySearchBySpuId(categoryId,spuId);
+        return ResponseVo.ok(list);
+    }
 
     /**
      * 列表
