@@ -19,4 +19,5 @@ public class SearchController {
         SearchResponseVo responseVo=this.searchService.search(searchParamVo);
         return ResponseVo.ok(responseVo);
     }
+
 }

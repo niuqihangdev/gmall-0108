@@ -207,6 +207,7 @@ public class SearchServiceImpl implements SearchService {
             boolQueryBuilder.filter(QueryBuilders.termsQuery("categoryId",categoryId));
         }
 
+
         //1.2.3、价格区间过滤
         Double priceFrom = searchParamVo.getPriceFrom();
         Double priceTo = searchParamVo.getPriceTo();

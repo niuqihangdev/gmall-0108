@@ -25,4 +25,5 @@ public class SearchResponseVo {
 
     //商品列表
     private List<Goods> goodsList;
+
 }

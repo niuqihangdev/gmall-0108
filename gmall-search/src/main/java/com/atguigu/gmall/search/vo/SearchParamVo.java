@@ -36,4 +36,5 @@ public class SearchParamVo {
     private Integer pageNum=1;
     private final Integer pageSize=20;
 
+
 }
