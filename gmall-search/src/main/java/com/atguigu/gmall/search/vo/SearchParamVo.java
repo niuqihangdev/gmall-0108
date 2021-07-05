@@ -30,7 +30,7 @@ public class SearchParamVo {
     private Boolean store;
 
     //排序 0-默认 1-价格降序 2-价格升序 3-销量降序 4-新品降序
-    private Integer sort;
+    private Integer sort=0;
 
     //分页查询
     private Integer pageNum=1;
