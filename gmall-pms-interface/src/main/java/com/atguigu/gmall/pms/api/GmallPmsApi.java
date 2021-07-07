@@ -57,4 +57,24 @@ public interface GmallPmsApi {
     public ResponseVo<List<SpuAttrValueEntity>> querySearchBySpuId(
             @PathVariable("categoryId") Long categoryId,
             @RequestParam("spuId") Long spuId);
+
+    /**
+     * 根据spuId查询spuEntity
+     * @param id
+     * @return
+     */
+    @GetMapping("pms/spu/{id}")
+    public ResponseVo<SpuEntity> querySpuById(@PathVariable("id") Long id);
+
+    /**
+     * 分类查询
+     */
+    @GetMapping("pms/category/parent/{parentId}")
+    public ResponseVo<List<CategoryEntity>>queryCategoryEntityByPid(@PathVariable("parentId") Long parentId);
+
+    /**
+     * 查询二级、三级标题
+     */
+    @GetMapping("pms/category/subs/{pid}")
+    public ResponseVo<List<CategoryEntity>> queryLvl2ByPid(@PathVariable("pid") Long pid);
 }

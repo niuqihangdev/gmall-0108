@@ -43,7 +43,17 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
         }
         QueryWrapper<CategoryEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("parent_id",parentId);
-        return categoryMapper.selectList(queryWrapper);
+        return this.list(queryWrapper);
+    }
+
+    /**
+     * 查询二级、三级标题
+     * @param pid
+     * @return
+     */
+    @Override
+    public List<CategoryEntity> queryLvl2ByPid(Long pid) {
+        return this.categoryMapper.queryLvl2ByPid(pid);
     }
 
 }

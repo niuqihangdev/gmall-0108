@@ -1,5 +1,5 @@
 server:
-  port: 18086
+  port: 18087
 spring:
   cloud:
     nacos:
@@ -17,24 +17,11 @@ spring:
   sleuth:
     sampler:
       probability: 1
-  elasticsearch:
-    rest:
-      uris: http://192.168.80.136:9200
-  jackson:
-    default-property-inclusion: non_null
+  redis:
+    port: 9379
+    host: 101.200.34.3
   thymeleaf:
     cache: false
-  rabbitmq:
-    host: 192.168.80.136
-    port: 5672
-    virtual-host: /niuqihang
-    username: niuqihang
-    password: niuqihang
-    listener:
-      simple:
-        prefetch: 1
-        concurrency: 4
-        acknowledge-mode: manual
 feign:
   sentinel:
     enabled: true

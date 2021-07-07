@@ -28,6 +28,15 @@ spring:
   redis:
     host: 101.200.34.3
     port: 9379
+  rabbitmq:
+    host: 192.168.80.136
+    port: 5672
+    virtual-host: /niuqihang
+    username: niuqihang
+    password: niuqihang
+    publisher-confirm-type: correlated
+    publisher-returns: true
+
 feign:
   sentinel:
     enabled: true

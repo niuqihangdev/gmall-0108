@@ -34,6 +34,14 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
     /**
+     * ***查询二级、三级标题
+     */
+    @GetMapping("subs/{pid}")
+    public ResponseVo<List<CategoryEntity>> queryLvl2ByPid(@PathVariable("pid") Long pid){
+        List<CategoryEntity> list=this.categoryService.queryLvl2ByPid(pid);
+        return ResponseVo.ok(list);
+    }
+    /**
      * 分类查询
      */
     @GetMapping("parent/{parentId}")
