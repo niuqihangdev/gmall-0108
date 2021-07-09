@@ -18,8 +18,8 @@ spring:
     sampler:
       probability: 1
   redis:
-    port: 9379
-    host: 101.200.34.3
+    host: 192.168.80.136
+    port: 6379
   thymeleaf:
     cache: false
 feign:

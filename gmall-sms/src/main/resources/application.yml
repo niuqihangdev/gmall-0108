@@ -18,8 +18,8 @@ spring:
     sender:
       type: web
   redis:
-    host: 101.200.34.3
-    port: 9379
+    host: 192.168.80.136
+    port: 6379
   sleuth:
     sampler:
       probability: 1

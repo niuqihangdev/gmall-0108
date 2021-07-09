@@ -30,4 +30,11 @@ public class IndexController {
         List<CategoryEntity> categoryEntities=this.indexService.queryLvl2Categories(pid);
         return ResponseVo.ok(categoryEntities);
     }
+
+    @GetMapping("/index/lock")
+    @ResponseBody
+    public ResponseVo testLock(){
+        this.indexService.testLock();
+        return ResponseVo.ok();
+    }
 }
