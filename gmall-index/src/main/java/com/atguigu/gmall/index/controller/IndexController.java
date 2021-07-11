@@ -37,4 +37,55 @@ public class IndexController {
         this.indexService.testLock();
         return ResponseVo.ok();
     }
+
+    @GetMapping("/index/lock2")
+    @ResponseBody
+    public ResponseVo testLock2(){
+        this.indexService.testLock2();
+        return ResponseVo.ok();
+    }
+
+    @GetMapping("/index/lock3")
+    @ResponseBody
+    public ResponseVo testLock3(){
+        this.indexService.testLock3();
+        return ResponseVo.ok();
+    }
+
+    /**
+     * 测试读写锁
+     * @return
+     */
+    @GetMapping("/index/read")
+    @ResponseBody
+    public ResponseVo testRead(){
+        this.indexService.testRead();
+        return ResponseVo.ok();
+    }
+
+    @GetMapping("/index/write")
+    @ResponseBody
+    public ResponseVo testWrite(){
+        this.indexService.testWrite();
+        return ResponseVo.ok();
+    }
+
+    /**
+     * 测试读闭锁
+     * @return
+     */
+    @GetMapping("/index/latch")
+    @ResponseBody
+    public ResponseVo testLatch(){
+        this.indexService.testLatch();
+        return ResponseVo.ok("班长锁门");
+    }
+
+    @GetMapping("/index/countDown")
+    @ResponseBody
+    public ResponseVo testCountDown(){
+        this.indexService.testCountDown();
+        return ResponseVo.ok("出来一个同学");
+    }
 }
+

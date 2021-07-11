@@ -10,4 +10,16 @@ public interface IndexService {
     List<CategoryEntity> queryLvl2Categories(Long pid);
 
     void testLock();
+
+    void testLock2();
+
+    void testLock3();
+
+    void testRead();
+
+    void testWrite();
+
+    void testLatch();
+
+    void testCountDown();
 }

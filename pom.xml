@@ -32,7 +32,7 @@
         <lombok.version>1.18.8</lombok.version>
         <jjwt.version>0.11.0</jjwt.version>
         <joda.version>2.10.5</joda.version>
-        <redisson.version>3.11.2</redisson.version>
+        <redisson.version>3.12.0</redisson.version>
         <lang3.version>3.9</lang3.version>
     </properties>
 
