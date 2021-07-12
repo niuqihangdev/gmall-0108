@@ -1,5 +1,8 @@
 package com.atguigu.gmall.index.util;
 
+import com.google.common.hash.BloomFilter;
+import com.google.common.hash.Funnels;
+import org.apache.commons.codec.Charsets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -94,13 +97,42 @@ public class DistributeLock {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
+        /*System.out.println(System.currentTimeMillis());
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 System.out.println("这是一个定时器任务: "+System.currentTimeMillis());
             }
-        },5000,10000);
+        },5000,10000);*/
+        BloomFilter<CharSequence> bloomFilter = BloomFilter.create(Funnels.stringFunnel(Charsets.UTF_8), 20, 0.3);
+
+        System.out.println(bloomFilter.put("1"));
+        System.out.println(bloomFilter.put("2"));
+        System.out.println(bloomFilter.put("3"));
+        System.out.println(bloomFilter.put("4"));
+        System.out.println(bloomFilter.put("5"));
+        System.out.println(bloomFilter.put("6"));
+        System.out.println(bloomFilter.mightContain("1"));
+        System.out.println(bloomFilter.mightContain("2"));
+        System.out.println(bloomFilter.mightContain("3"));
+        System.out.println(bloomFilter.mightContain("4"));
+        System.out.println(bloomFilter.mightContain("5"));
+        System.out.println("-----------------------------------------");
+        System.out.println(bloomFilter.mightContain("7"));
+        System.out.println(bloomFilter.mightContain("9"));
+        System.out.println(bloomFilter.mightContain("0"));
+        System.out.println(bloomFilter.mightContain("8"));
+        System.out.println(bloomFilter.mightContain("7"));
+        System.out.println(bloomFilter.mightContain("7"));
+        System.out.println(bloomFilter.mightContain("9"));
+        System.out.println(bloomFilter.mightContain("0"));
+        System.out.println(bloomFilter.mightContain("8"));
+        System.out.println(bloomFilter.mightContain("7"));
+        System.out.println(bloomFilter.mightContain("7"));
+        System.out.println(bloomFilter.mightContain("9"));
+        System.out.println(bloomFilter.mightContain("0"));
+        System.out.println(bloomFilter.mightContain("8"));
+        System.out.println(bloomFilter.mightContain("7"));
     }
 
 }
