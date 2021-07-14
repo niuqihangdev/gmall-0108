@@ -35,7 +35,7 @@ public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
     /**
-     * **库存维护
+     * ***库存维护
      */
     @GetMapping("sku/{skuId}")
     public ResponseVo<List<WareSkuEntity>> queryWareskuBySkuId(@PathVariable("skuId") Long skuId){

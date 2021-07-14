@@ -2,6 +2,9 @@ package com.atguigu.gmall.pms.controller;
 
 import java.util.List;
 
+import com.atguigu.gmall.pms.vo.SaleAttrVo;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.api.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,32 @@ public class SkuAttrValueController {
 
     @Autowired
     private SkuAttrValueService skuAttrValueService;
+    /**
+     * ***根据spuId查询json信息
+     */
+    @GetMapping("mapping/{spuId}")
+    public ResponseVo<String> queryMappingBySpuId(@PathVariable("spuId")Long spuId){
+        String mapper=this.skuAttrValueService.queryMappingBySpuId(spuId);
+        return ResponseVo.ok(mapper);
+    }
+
+    /**
+     * ***根据skuId查询销售属性信息
+     */
+    @GetMapping("sku/{skuId}")
+    public ResponseVo<List<SkuAttrValueEntity>> querySkuAttrValueBySkuId(@PathVariable("skuId")Long skuId){
+        List<SkuAttrValueEntity> list=this.skuAttrValueService.list(new QueryWrapper<SkuAttrValueEntity>().eq("sku_id",skuId));
+        return ResponseVo.ok(list);
+    }
+
+    /**
+     * ***根据spuId查询销售属性信息
+     */
+    @GetMapping("spu/{spuId}")
+    public ResponseVo<List<SaleAttrVo>> querySaleAttrVoBySpuId(@PathVariable("spuId")Long spuId){
+        List<SaleAttrVo> list=this.skuAttrValueService.querySaleAttrVoBySpuId(spuId);
+        return ResponseVo.ok(list);
+    }
 
     /**
      * ***根据categoryId和skuId获取属性信息

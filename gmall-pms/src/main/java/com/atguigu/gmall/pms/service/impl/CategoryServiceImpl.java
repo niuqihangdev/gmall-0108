@@ -3,6 +3,7 @@ package com.atguigu.gmall.pms.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -54,6 +55,24 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
     @Override
     public List<CategoryEntity> queryLvl2ByPid(Long pid) {
         return this.categoryMapper.queryLvl2ByPid(pid);
+    }
+
+    /**
+     * ***根据三级分类Id，查询一二三级分类
+     */
+    @Override
+    public List<CategoryEntity> queryLv123ByCid(Long categoryId) {
+        //获取三级分类信息
+        CategoryEntity category3 = this.getById(categoryId);
+        if(category3==null){
+            return null;
+        }
+        //获取二级分类信息
+        CategoryEntity category2 = this.getById(category3.getParentId());
+        //获取一级分类信息
+        CategoryEntity category1 = this.getById(category2.getParentId());
+
+        return Arrays.asList(category3,category2,category1);
     }
 
 }

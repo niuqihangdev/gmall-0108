@@ -34,6 +34,15 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
     /**
+     * ***根据三级分类Id，查询一二三级分类
+     */
+    @GetMapping("sub/{categoryId}")
+    public ResponseVo<List<CategoryEntity>> queryLv123ByCid(@PathVariable("categoryId")Long categoryId){
+        List<CategoryEntity> list=this.categoryService.queryLv123ByCid(categoryId);
+        return ResponseVo.ok(list);
+    }
+
+    /**
      * ***查询二级、三级标题
      */
     @GetMapping("subs/{pid}")
