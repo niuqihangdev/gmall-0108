@@ -43,3 +43,7 @@ spring:
           uri: lb://item-service
           predicates:
             - Host=item.gmall.com
+        - id: ums-route # 营销管理路由
+          uri: lb://ums-service
+          predicates:
+            - Path=/ums/**

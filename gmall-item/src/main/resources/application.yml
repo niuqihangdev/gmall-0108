@@ -17,6 +17,14 @@ spring:
   sleuth:
     sampler:
       probability: 1
+  thymeleaf:
+    cache: false
 feign:
   sentinel:
     enabled: true
+thread:
+  pool:
+    corePoolSize: 500
+    maxCorePoolSize: 1000
+    keepAliveTime: 60
+    workQueue: 5000
