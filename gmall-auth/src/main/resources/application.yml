@@ -1,5 +1,5 @@
 server:
-  port: 18087
+  port: 18089
 spring:
   cloud:
     nacos:
@@ -11,17 +11,21 @@ spring:
         port: 8719
   zipkin:
     base-url: http://localhost:9411
-    discovery-client-enabled: true
+    discovery-client-enabled: false
     sender:
       type: web
   sleuth:
     sampler:
       probability: 1
-  redis:
-    host: 192.168.80.136
-    port: 6379
   thymeleaf:
     cache: false
 feign:
   sentinel:
-    enabled: true
+    enabled: false
+jwt:
+  pubKeyPath: D:\project\rsa\rsa.pub
+  priKeyPath: D:\project\rsa\rsa.pri
+  secret: 234!@@#@@@$@
+  expireMinutes: 300
+  cookieName: GMALL-TOKEN
+  unick: unick

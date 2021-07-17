@@ -1,0 +1,43 @@
+server:
+  port: 18090
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+  zipkin:
+    base-url: http://localhost:9411
+    discovery-client-enabled: true
+    sender:
+      type: web
+  thymeleaf:
+    cache: false
+  sleuth:
+    sampler:
+      probability: 1
+  redis:
+    host: 192.168.80.136
+    port: 6379
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli_cart?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+feign:
+  sentinel:
+    enabled: true
+mybatis-plus:
+  mapper-locations: classpath:mapper/cart/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+  type-aliases-package: com.atguigu.gmall.cart.entity
+jwt:
+  pubKeyPath: D:\project\rsa\rsa.pub
+  cookieName: GMALL-TOKEN
+  userKey: user-key
+  expire: 15552000

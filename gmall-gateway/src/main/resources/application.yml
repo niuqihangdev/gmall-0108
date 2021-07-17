@@ -43,7 +43,21 @@ spring:
           uri: lb://item-service
           predicates:
             - Host=item.gmall.com
-        - id: ums-route # 营销管理路由
+        - id: ums-route # 用户管理路由
           uri: lb://ums-service
           predicates:
             - Path=/ums/**
+        - id: auth-route # 授权中心路由
+          uri: lb://auth-service
+          predicates:
+            - Host=sso.gmall.com
+          filters:
+            - Auth=/xxx
+        - id: cart-route # 购物车路由
+          uri: lb://cart-service
+          predicates:
+            - Host=cart.gmall.com
+jwt:
+  pubKeyPath: D:\project\rsa\rsa.pub
+  cookieName: GMALL-TOKEN
+  token: token
