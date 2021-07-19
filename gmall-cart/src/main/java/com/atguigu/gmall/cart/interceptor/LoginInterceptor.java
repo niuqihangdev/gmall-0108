@@ -42,7 +42,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(StringUtils.isNotBlank(token)){
             //解析jwt
             Map<String, Object> map = JwtUtils.getInfoFromToken(token, this.jwtProperties.getPublicKey());
-            Long userId = (Long)map.get("userId");
+            Long userId = Long.valueOf(map.get("userId").toString());
             userInfo.setUserId(userId);
         }
         THREAD_LOCAL.set(userInfo);
@@ -55,12 +55,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("后置方法");
+        //System.out.println("后置方法");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        System.out.println("执行完方法");
+        // System.out.println("执行完方法");
         // 由于使用的是tomcat线程池，所有请求结束，线程并没有结束，只是回到了线程池，如果不手动释放资源，会导致内存泄漏
         THREAD_LOCAL.remove();
     }

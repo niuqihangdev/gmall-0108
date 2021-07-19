@@ -1,11 +1,10 @@
 package com.atguigu.gmall.cart.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.atguigu.gmall.common.bean.PageResultVo;
-import com.atguigu.gmall.common.bean.PageParamVo;
-import com.atguigu.gmall.cart.entity.InfoEntity;
+import com.atguigu.gmall.cart.entity.CartEntity;
+import org.springframework.util.concurrent.ListenableFuture;
 
-import java.util.Map;
+import java.util.List;
+import java.util.concurrent.Future;
 
 /**
  * 
@@ -15,6 +14,21 @@ import java.util.Map;
  * @date 2021-07-16 19:42:04
  */
 public interface CartService{
+
+
+    void addCart(CartEntity cart);
+
+    CartEntity queryCartBySkuId(CartEntity cart);
+
+    List<CartEntity> queryCart();
+
+    void updateCart(CartEntity cart);
+
+    void deleteCart(Long skuId);
+
+    ListenableFuture<String> executor1();
+    ListenableFuture<String> executor2();
+
 
 
 }
